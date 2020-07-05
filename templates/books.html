@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Books
+{% endblock %}
+
+{% block body %}
+
+
+    <ul>
+      <p>
+      <h1>Matching Results:</h1>
+        {% for book in books %}
+            <li>
+                <a href="{{ url_for('books', book_id=books.id) }}">
+                    {{ books.title }} by {{ books.author }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

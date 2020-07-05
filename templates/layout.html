@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} eBooks</title>
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+  <nav>
+    <h1>eBooks Portal</h1>
+    <u>
+      {% if g.user %}
+        <li><span>{{ g.user['username'] }}</span>
+        <li><a href="{{ url_for('logout') }}">Log Out</a>
+      {% else %}
+        <li><a href="{{ url_for('login') }}">Log In</a>
+        <li><a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </u>
+  </nav>
+    </head>
+  <body>
+    <section class="content">
+
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+
+      {% for error in get_flashed_messages() %}
+        <div class="flash">{{ error }} </div>
+      {% endfor %}
+
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+      </section>
+    </body>
+</html>

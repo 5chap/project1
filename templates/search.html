@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <h3>Search for your favourite book:</h3>
+<body>
+<center>
+
+<form class="example" method="post" action= "{{ url_for('search') }}"
+style="margin:auto;max-width:600px">
+<input type="text" placeholder="Search by author or book title" name="bookName">
+<button type="submit"><i class="fa fa-search">Search</i></button>
+</form>
+</center>
+
+<p>
+<p>
+
+      <h4>{{notFound}}</h4>
+    <ul>
+
+        {% for result in results %}
+            <li>
+                <a href="{{ url_for('books', book_id = result.id) }}">
+                    {{ result.title }} by {{ result.author }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
+
+{% endblock %}
